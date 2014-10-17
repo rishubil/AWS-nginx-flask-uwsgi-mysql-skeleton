@@ -72,7 +72,11 @@ sudo vi /etc/nginx/nginx.conf
     sudo service nginx start
 ```
 
-6. 로그화일 생성 
+6. 로그화일 생성
+
+```
+    mkdir logs
+```
 
  - 어플리케이션 다시 시작하기
 
