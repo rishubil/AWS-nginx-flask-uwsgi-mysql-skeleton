@@ -10,22 +10,22 @@ AWS flask application 세팅하기
 
 1. 패키지 설치
     ```
-        sudo yum install python26-devel nginx gcc gcc-c++ python-setuptools
-        sudo easy_install pip
-        sudo pip install uwsgi virtualenv
+        $ sudo yum install python26-devel nginx gcc gcc-c++ python-setuptools
+        $ sudo easy_install pip
+        $ sudo pip install uwsgi virtualenv
     ```
 
 2. 작업폴더 생성, 세팅
     ```
-        mkdir your_app_folder
-        cd your_app_folder
-        virtualenv venv
-        . venv/bin/activate
-        pip install -flask flask-sqlalchemy flask-migrate python-gflags flask-oauth flask-wtf
+        $ mkdir your_app_folder
+        $ cd your_app_folder
+        $ virtualenv venv
+        $ . venv/bin/activate
+        $ pip install -flask flask-sqlalchemy flask-migrate python-gflags flask-oauth flask-wtf
     ```
 
 3. Nginx 세팅  
-    sudo vi /etc/nginx/nginx.conf
+    $ sudo vi /etc/nginx/nginx.conf
 
     ```
         user root;
@@ -63,32 +63,32 @@ AWS flask application 세팅하기
 
 5. Nginx 재시작
     ```
-        sudo service nginx stop
-        sudo service nginx start
+        $ sudo service nginx stop
+        $ sudo service nginx start
     ```
 
 6. 로그화일 생성 
      - 어플리케이션 다시 시작하기  
         ```
-            uwsgi --ini uwsgi.ini
+            $ uwsgi --ini uwsgi.ini
         ```
      - 로그 보기  
         ```
-            vi logs/log.log
+            $ vi logs/log.log
         ```
      - 마지막 10줄 보기  
         ```
-            tail logs/log.log
+            $ tail logs/log.log
         ```
      - 프로세스 id 생성 확인  
         ```
-            vi mypid.pid
+            $ vi mypid.pid
         ```
 
 7. 빠른 어플리케이션 다시 시작
      - 쉘 스크립트 화일 실행  
         ```
-            sh restart.sh 
+            $ sh restart.sh 
         ```
 
 8. ls로 생성된 화일 확인  
@@ -99,16 +99,16 @@ AWS flask application 세팅하기
 
 9. mysql 설치  
     ```
-        sudo yum install mysql
-        sudo yum install mysql-server
-        sudo yum install mysql-devel
-        sudo chgrp -R mysql /var/lib/mysql
-        sudo chmod -R 770 /var/lib/mysql
-        sudo service mysqld start
+        $ sudo yum install mysql
+        $ sudo yum install mysql-server
+        $ sudo yum install mysql-devel
+        $ sudo chgrp -R mysql /var/lib/mysql
+        $ sudo chmod -R 770 /var/lib/mysql
+        $ sudo service mysqld start
     ```
      - 설치시 입력한 비밀번호를 'rootpassword' 대신 입력합니다.  
         ```
-            /usr/bin/mysqladmin -u root password rootpassword
+            $ /usr/bin/mysqladmin -u root password rootpassword
         ```
      - 앞으로 mysql에 접속할 유저를 생성합니다.  
         생성할 유저명을 'myuser' 대신 입력하고, 사용할 비밀번호를 'yourpasswordhere' 대신 입력합니다.
@@ -140,15 +140,16 @@ AWS flask application 세팅하기
         ```  
      - db 생성  
         ```
-            mysql -u root -p
-            show databases;
-            create database DBname;
+            $ mysql -u root -p
+            
+            mysql> show databases;
+            mysql> create database DBname;
         ```
      - MySQL-python 설치  
         ```
-            sudo yum install MySQL-python
+            $ sudo yum install MySQL-python
         ```  
         이후, virtualenv 상태에서,  
         ```
-            pip install MySQL-python
+            $ pip install MySQL-python
         ```
